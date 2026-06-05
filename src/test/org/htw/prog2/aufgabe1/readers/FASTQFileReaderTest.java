@@ -20,7 +20,7 @@ public class FASTQFileReaderTest {
     @Test
     void throws_wrongFormat() {
         Exception e = assertThrows(FileFormatException.class, () -> {
-            new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("HIVMutationPatternsPI.csv");
+            new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("data/HIVMutationPatternsPI.csv");
         });
         assertEquals("FASTQ File does not start with sequence header line.", e.getMessage());
     }
@@ -28,7 +28,7 @@ public class FASTQFileReaderTest {
     @Test
     void throws_wrongFormat2() {
         Exception e = assertThrows(FileFormatException.class, () -> {
-            new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("protease_reference.fasta");
+            new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("data/protease_reference.fasta");
         });
         assertEquals("FASTQ File does not start with sequence header line.", e.getMessage());
     }
@@ -36,7 +36,7 @@ public class FASTQFileReaderTest {
     @Test
     void doesNotThrow_correctFormat() {
         assertDoesNotThrow(() -> {
-            new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("protease_sequences.fastq");
+            new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("data/protease_sequences.fastq");
         });
     }
 
@@ -47,24 +47,24 @@ public class FASTQFileReaderTest {
 
     @Test
     void cannotRead_wrongFormat() {
-        assertFalse(new org.htw.prog2.aufgabe1.readers.FASTQFileReader().canReadFile("HIVMutationPatternsPI.csv"));
+        assertFalse(new org.htw.prog2.aufgabe1.readers.FASTQFileReader().canReadFile("data/HIVMutationPatternsPI.csv"));
     }
 
     @Test
     void cannotRead_wrongFormat2() {
-        assertFalse(new org.htw.prog2.aufgabe1.readers.FASTQFileReader().canReadFile("protease_reference.fasta"));
+        assertFalse(new org.htw.prog2.aufgabe1.readers.FASTQFileReader().canReadFile("data/protease_reference.fasta"));
     }
 
     @Test
     void canRead_correctFormat() {
-        assertTrue(new org.htw.prog2.aufgabe1.readers.FASTQFileReader().canReadFile("protease_sequences.fastq"));
+        assertTrue(new org.htw.prog2.aufgabe1.readers.FASTQFileReader().canReadFile("data/protease_sequences.fastq"));
     }
 
     @Test
     void getNumberOfSequences_multiple() {
         org.htw.prog2.aufgabe1.files.SequenceFile seqfile = null;
         try {
-            seqfile = new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("protease_sequences.fastq");
+            seqfile = new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("data/protease_sequences.fastq");
         } catch(Exception e) {
             fail("Es sollte keine Exception fliegen.");
         }
@@ -75,7 +75,7 @@ public class FASTQFileReaderTest {
     void getSequences_multiple() {
         org.htw.prog2.aufgabe1.files.SequenceFile seqfile = null;
         try {
-            seqfile = new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("protease_sequences.fastq");
+            seqfile = new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("data/protease_sequences.fastq");
         } catch(Exception e) {
             fail("Es sollte keine Exception fliegen.");
         }
@@ -88,7 +88,7 @@ public class FASTQFileReaderTest {
     void getFirstSequence_multiple() {
         org.htw.prog2.aufgabe1.files.SequenceFile seqfile = null;
         try {
-            seqfile = new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("protease_sequences.fastq");
+            seqfile = new org.htw.prog2.aufgabe1.readers.FASTQFileReader().readFile("data/protease_sequences.fastq");
         } catch(Exception e) {
             fail("Es sollte keine Exception fliegen.");
         }

@@ -32,9 +32,9 @@ class ReaderManagerTest {
         ReaderManager<SequenceFileReader> manager = new ReaderManager<>();
         manager.addReader(new FASTAFileReader());
         manager.addReader(new FASTQFileReader());
-        assertDoesNotThrow(() -> { manager.getReaderForFile("protease_sequences.fastq"); });
+        assertDoesNotThrow(() -> { manager.getReaderForFile("data/protease_sequences.fastq"); });
         try {
-            SequenceFileReader reader = manager.getReaderForFile("protease_sequences.fastq");
+            SequenceFileReader reader = manager.getReaderForFile("data/protease_sequences.fastq");
             assertTrue(reader instanceof FASTQFileReader);
         } catch(Exception e) {
             fail(e);

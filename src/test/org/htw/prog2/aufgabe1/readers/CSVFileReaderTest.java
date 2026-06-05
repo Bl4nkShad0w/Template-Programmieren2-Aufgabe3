@@ -59,35 +59,35 @@ class CSVFileReaderTest {
     @Test
     void constructor_wrongHeaderStart() {
         assertThrows(FileFormatException.class, () -> {
-            new CSVFileReader().readFile("HIVMutationPatterns_wrongHeader.csv");
+            new CSVFileReader().readFile("data/HIVMutationPatterns_wrongHeader.csv");
         });
     }
 
     @Test
     void constructor_wrongHeaderDrugnames() {
         assertThrows(FileFormatException.class, () -> {
-            new CSVFileReader().readFile("HIVMutationPatterns_wrongHeader2.csv");
+            new CSVFileReader().readFile("data/HIVMutationPatterns_wrongHeader2.csv");
         });
     }
 
     @Test
     void constructor_columnNumbers() {
         assertThrows(FileFormatException.class, () -> {
-            new CSVFileReader().readFile("HIVMutationPatterns_wrongElementNumber.csv");
+            new CSVFileReader().readFile("data/HIVMutationPatterns_wrongElementNumber.csv");
         });
     }
 
     @Test
     void constructor_correctFile() {
         assertDoesNotThrow(() -> {
-            new CSVFileReader().readFile("HIVMutationPatternsPI.csv");
+            new CSVFileReader().readFile("data/HIVMutationPatternsPI.csv");
         });
     }
 
     @Test
     void getNumberOfMutations() {
         assertDoesNotThrow(() -> {
-            MutationFile patterns = new CSVFileReader().readFile("HIVMutationPatternsPI.csv");
+            MutationFile patterns = new CSVFileReader().readFile("data/HIVMutationPatternsPI.csv");
             assertEquals(825, patterns.getNumberOfMutations());
         });
     }
